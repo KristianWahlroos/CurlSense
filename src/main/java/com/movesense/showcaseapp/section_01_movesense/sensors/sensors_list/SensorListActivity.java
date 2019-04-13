@@ -98,7 +98,9 @@ public class SensorListActivity extends BaseActivity implements View.OnClickList
 
         sensorsListAdapter.notifyDataSetChanged();
         Log.d("LogActivity", "sensor");
-        //MultiSensorDataGatherer.Instance.enableGathering(this, "curls");
+        TextView textView = (TextView)findViewById(R.id.textView3);
+        MultiSensorDataGatherer.Instance.enableGathering(this, "curls",textView );
+
 
     }
 
@@ -170,7 +172,7 @@ public class SensorListActivity extends BaseActivity implements View.OnClickList
                 button2 = (Button) findViewById(R.id.button2);
                 button3 = (Button) findViewById(R.id.button3);
                 if (!isRecording) {
-                    MultiSensorDataGatherer.Instance.enableGathering(this, Constants.TYPE_CURLS);
+                  //  MultiSensorDataGatherer.Instance.enableGathering(this, Constants.TYPE_CURLS);
                     button2.setBackgroundColor(Color.CYAN);
                     button3.setBackgroundColor(Color.GRAY);
                     Log.d("hello", "heellowoorld2not");
@@ -187,7 +189,7 @@ public class SensorListActivity extends BaseActivity implements View.OnClickList
                 button2 = (Button) findViewById(R.id.button2);
                 button3 = (Button) findViewById(R.id.button3);
                 if (!isRecording) {
-                    MultiSensorDataGatherer.Instance.enableGathering(this, Constants.TYPE_RANDOM);
+                   // MultiSensorDataGatherer.Instance.enableGathering(this, Constants.TYPE_RANDOM);
                     button3.setBackgroundColor(Color.CYAN);
                     button2.setBackgroundColor(Color.GRAY);
                     Log.d("hello", "heellowoorld3not");

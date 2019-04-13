@@ -1,6 +1,7 @@
 package com.movesense.showcaseapp.custom_classes;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,6 +36,8 @@ import com.movesense.showcaseapp.section_02_multi_connection.sensor_usage.MultiS
 import com.movesense.showcaseapp.utils.FormatHelper;
 import com.movesense.showcaseapp.utils.ThrowableToastingAction;
 
+import org.w3c.dom.Text;
+
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -59,7 +62,7 @@ public class MultiSensorDataGatherer  {
         return data;
     }
 
-    public void enableGathering(Activity activity, String type) {
+    public void enableGathering(Activity activity, String type, TextView textView) {
         dataDump = new DataDump(type);
         Log.d("testLogx" ,"GATHERING ENABLED");
         mMdsLinearAccSubscription = Mds.builder().build(activity).subscribe("suunto://MDS/EventListener",
@@ -75,6 +78,8 @@ public class MultiSensorDataGatherer  {
                             LinearAcceleration.Array arrayData = linearAccelerationData.body.array[0];
                             dataDump.addData(arrayData.x, arrayData.y, arrayData.z, (int) (System.currentTimeMillis()), Constants.ARRAY_ACC);
 
+
+                            Analyser.Instance.analyseAcc(arrayData.x, textView);
                             Log.d("testLog","x " + arrayData.x +" y " + arrayData.y +" z " + arrayData.z);
 
                         }
@@ -99,7 +104,7 @@ public class MultiSensorDataGatherer  {
 
                             AngularVelocity.Array arrayData = angularVelocity.body.array[0];
                             dataDump.addData(arrayData.x, arrayData.y, arrayData.z, (int) (System.currentTimeMillis()), Constants.ARRAY_GYRO);
-
+                            Analyser.Instance.analyseGyro(arrayData.x);
                         }
                         Log.d("testLog2","Things are happening");
                     }

@@ -7,10 +7,14 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.movesense.mds.Mds;
 import com.movesense.showcaseapp.BuildConfig;
 import com.movesense.showcaseapp.R;
+import com.movesense.showcaseapp.custom_classes.Constants;
+import com.movesense.showcaseapp.custom_classes.MultiSensorDataGatherer;
 import com.movesense.showcaseapp.google_drive.SendLogsToGoogleDriveActivity;
 import com.movesense.showcaseapp.section_01_movesense.MovesenseActivity;
+import com.movesense.showcaseapp.section_01_movesense.sensors.sensors_list.SensorListActivity;
 import com.movesense.showcaseapp.section_02_multi_connection.connection.MultiConnectionActivity;
 import com.movesense.showcaseapp.section_03_dfu.DfuActivity2;
 
@@ -28,7 +32,7 @@ public class MainViewActivity extends AppCompatActivity {
     @BindView(R.id.mainView_savedData_Ll) RelativeLayout mMainViewSavedDataLl;
     @BindView(R.id.mainView_appVersion_tv) TextView mMainViewAppVersionTv;
     @BindView(R.id.mainView_libraryVersion_tv) TextView mMainViewLibraryVersionTv;
-
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,14 @@ public class MainViewActivity extends AppCompatActivity {
 
         mMainViewAppVersionTv.setText(getString(R.string.application_version, versionName));
         mMainViewLibraryVersionTv.setText(getString(R.string.library_version, libraryVersion));
+       //Mds.builder().build(this).connect(Constants.MAC_ADDRESS, null);
+
+        textView = (TextView)findViewById(R.id.mainView_appVersion_tv);
+        textView.setText("NOT CURLING");
+
+
+
+        //startActivity(new Intent(MainViewActivity.this, MovesenseActivity.class));
 
     }
 

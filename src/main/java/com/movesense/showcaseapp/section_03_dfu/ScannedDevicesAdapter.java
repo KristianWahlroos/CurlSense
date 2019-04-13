@@ -60,9 +60,9 @@ public class ScannedDevicesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
      * @param scanResult New scan result to add to this adapter
      */
     public void handleScanResult(RxBleScanResult scanResult) {
-        RxBleDevice device = scanResult.getBleDevice();
+            RxBleDevice device = scanResult.getBleDevice();
         Log.d(TAG, "Scanned Device Name : " + device.getName() + " Address: " + device.getMacAddress());
-
+        Log.d("logDataMac", "Scanned Device Name : " + device.getName() + " Address: " + device.getMacAddress());
         // Show only Movesense devices on the list
         if (showOnlyMovesense) {
             if (device.getName() != null && device.getName().contains(mContext.getString(R.string.movesense_device_name))) {

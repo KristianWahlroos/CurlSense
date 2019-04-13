@@ -20,7 +20,7 @@ import okhttp3.Response;
 public class JsonSender{
 
     public static final JsonSender Instance = new JsonSender();
-    private String serverAddress = "https://wet-stingray-76.localtunnel.me/data";
+    private String serverAddress = Constants.SERVER_ADDRESS;
 
     //Uploads a Json through Http request.
     public void jsonUpload(Activity activity, final String json)

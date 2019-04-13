@@ -71,12 +71,14 @@
             </intent-filter>
         </receiver>
 
+
+
         <activity
             android:name=".section_00_mainView.MainViewActivity"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.MY_ACTION"/>
+                <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
